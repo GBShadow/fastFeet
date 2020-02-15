@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken';
 import { promisify } from 'util';
-// transforma uma funcao de callback em async await
 
 import authConfig from '../../config/auth';
 
@@ -8,7 +7,7 @@ export default async (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {
-    return res.status(401).json({ error: 'Token not provided' });
+    res.status(401).json({ error: 'Token not provided' });
   }
 
   const [, token] = authHeader.split(' ');
